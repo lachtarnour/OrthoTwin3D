@@ -54,6 +54,14 @@ patient-disjoint Teeth3DS split.
 | Evaluation | Two fixed validation views; best checkpoint selected by validation mIoU |
 | Training control | ReduceLROnPlateau (`factor=0.8`, `patience=2`) and early stopping (`patience=7`, `min_delta=0.001`) |
 
+### Model Architecture
+
+![DGCNN architecture for point-wise tooth segmentation in OrthoTwin3D](doc/assets/dgcnn_architecture.png)
+
+Three dynamic EdgeConv blocks extract local features, which are combined with
+a global embedding to predict one of 17 classes for each point: background or
+one of 16 jaw-normalized tooth positions.
+
 ### Qualitative Inference
 
 The opening figure shows a validation scan inferred with the augmented DGCNN
